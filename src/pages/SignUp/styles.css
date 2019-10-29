@@ -1,0 +1,26 @@
+@media (min-width: 1920px) {
+    body {
+        background: #FFF url('../../assets/signup.png') no-repeat;
+        background-size: cover;
+    }
+
+    .form {
+        margin-left: 40%;
+        margin-top: 10%;
+        width: 400px;
+        height: 500px;
+        background-color:#6441a5;
+        /* background-color: rgb(29,161,242); */
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    form {
+        padding: 30px;
+    }
+
+    form input:first-of-type {
+        margin-top:30px;
+    }
+
+}
