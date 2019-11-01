@@ -1,47 +1,184 @@
-@media (min-width: 1920px) {
+.all {          
+    position: absolute;        
+    width: 100%;
+    height: 100%;        
+    overflow: hidden;
+    background-color: rgb(36, 41, 46, 0.95);        
+}
+
+.form {
+    margin-top: 7%;
+    width: 420px;
+    height: 500px;
+    background-color:#FFF;        
+    border-radius: 3px;   
+    padding: 25px;   
+}
+
+.about h1 {
+    color: #FFF;
+}
+
+.about p {
+    width: 550px;
+    text-align: initial;
+    font-size: 20px;
+    color:#959da5;  
+    padding-top:10px      
+}
+
+@media screen and (min-width:1100px) {
+    .about {
+        float: left;
+        margin-top:12%;
+    }
+}
+
+@media screen and (min-width:720px) {
+    .about h1 {
+        font-size: 60px;
+        color:#FFF;
+    }
+}
+
+@media screen and (min-width: 1706px) {
     body {
         background: url('../../assets/offlinewallpaper.jpg') no-repeat;
         background-size: cover;                        
     }
 
-    .all {          
-        position: absolute;        
-        width: 100%;
-        height: 100%;
-        padding-bottom: 100px;        
-        overflow: hidden;
-        background-color: rgb(36, 41, 46, 0.95);        
-    }
-
     .form {
-        margin-left: 52%;
-        margin-top: 7%;
-        width: 420px;
-        height: 500px;
-        background-color:#FFF;        
-        border-radius: 3px;        
+        margin-left: 52%;   
     }
 
-    form {
-        padding: 25px;
+    .about {                
+        margin-left: 16%;        
+    }
+}
+
+@media screen and (min-width:1275px) and (max-width: 1706px) {    
+    .form {
+        margin-left: 55%;
     }
 
-    .about {        
-        float: left;
-        margin-left: 16%;
-        margin-top: 12%;
+    .about {                
+        margin-left: 7%;        
+    }
+}
+
+@media screen and (min-width:1225px) and (max-width:1275px) {
+    .form {
+        margin-left: 60%;
+    }
+    
+    .about {                
+        margin-left: 4%;        
+    }
+}
+
+@media screen and (min-width:1100px) and (max-width:1225px) {
+    .form {
+        margin-left: 60%; 
+    }
+    
+    .about {                
+        margin-left: 3%;        
+    }
+}
+
+@media screen and (min-width:1020px) and (max-width: 1100px) {
+    .form {
+        margin-left: 30%; 
+    }
+    
+    .about {                
+        margin-left: 22%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1020px) {
+    .form {
+        margin-left: 28%;
+    }
+
+    .about {                
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (max-width:850px) and (min-width: 720px) {
+    .form {
+        margin-left: 24%; 
+    }
+
+    .about {                
+        margin-left: 14%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 620px) and (max-width:720px) {
+    .form {
+        margin-left: 17%;
+    }
+
+    .about {                
+        margin-left: 14%;
+        margin-top: 5%;
     }
 
     .about h1 {
-        font-size: 60px;
-        color:#FFF;
+        font-size: 40px;        
     }
 
     .about p {
-        width: 550px;
-        text-align: initial;
-        font-size: 20px;
-        color:#959da5;  
-        padding-top:10px      
+        width: 500px;        
+        font-size: 14px;      
     }
 }
+
+@media screen and (min-width:550px) and (max-width: 620px) {
+    .form {
+        margin-left: 13%;
+    }
+
+    .about {                
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+
+    .about h1 {
+        font-size: 40px;        
+    }
+
+    .about p {
+        width: 450px;        
+        font-size: 14px;                   
+    }
+}
+
+@media screen and (max-width:550px) {
+    .form {        
+        width: 100%;
+    }
+
+    .about {                
+        margin-left: 11%;
+        margin-top: 5%;
+    }
+
+    .about h1 {
+        font-size: 40px;        
+    }
+
+    .about p {
+        width: 350px;        
+        font-size: 14px;                 
+    }
+}
+
+/* total of 387 lines of brute code */
+
+
