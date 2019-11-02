@@ -1,8 +1,7 @@
 import React from 'react';
-import Nav from '../Nav';
-
 import { Link } from 'react-router-dom';
 
+import Nav from '../Styled/Nav';
 import liveIcon from '../../assets/live_icon.png';
 
 import './styles.css';
@@ -23,7 +22,7 @@ const Navmenu = () => (
             <Link to="/">Log out</Link>
         </div>
         <div className="menuitem">
-            <Link to="/preferences">Preferences</Link>
+            <Link to="/settings/preferences">Preferences</Link>
         </div>
             
         
