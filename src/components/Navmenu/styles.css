@@ -1,40 +1,35 @@
-.menu > .allmenu > .menuitems > .menuitem {
-    padding:10px;
-    display: inline-block;    
+.menu {
+    display: inline-flex;        
+    align-items: center;
 }
 
-.menu > .allmenu > .menuitems {
-    display: inline-block;
-    padding-top:16px;
+.menu > .liveicon {
+    margin-left: 18px;
 }
 
-.menu > .allmenu > .menuitems > .menuitem > a {
+.menu > .searchmenu {
+    margin-left: 18px;    
+}
+
+.menu > .searchmenu > input {
+    width:100%;    
+    border: 1px;
+    border-radius: 2px;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 14px;
+    background-color:#121212;
+    color: #FFF;
+    
+}
+
+.menu > .menuitem {
+    padding:10px;    
+}
+
+.menu > .menuitem > a {
     font-weight: bold;
     font-size: 14px;
 }
-
-.menu > .allmenu > .nonmenu > .liveicon {     
-    position: absolute;     
-    display: inline-block;     
-    padding-right: 12px;
-}
-
-.menu > .allmenu {
-    margin-left:30px;  
-    height: 100px;  
-}
-
-.menu > .allmenu > .nonmenu > .searchmenu {
-    display: inline-block;
-    margin-left: 100px;
-}
-
-.menu > .allmenu > .nonmenu {
-    display: inline-block;
-}
-
-
-body {
-    background-color:#f00;
-}
+/* search about  svg */
 

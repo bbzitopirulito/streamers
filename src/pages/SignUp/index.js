@@ -31,24 +31,21 @@ export default function SingUp({ history }) {
                             <label htmlFor="email">E-mail</label> 
                             <input 
                                 type="email" 
-                                id="email" 
-                                // placeholder="E-mail" 
+                                id="email"                                 
                                 value={email} 
                                 onChange={event => setEmail(event.target.value)}                         
                             />
                             <label htmlFor="username">Username</label> 
                             <input 
                                 type="text" 
-                                id="username" 
-                                // placeholder="Username" 
+                                id="username"                                 
                                 value={username} 
                                 onChange={event => setUsername(event.target.value)} 
                             />
                             <label htmlFor="password">Password</label> 
                             <input 
                                 type="password" 
-                                id="password" 
-                                // placeholder="Password" 
+                                id="password"                                 
                                 value={password} 
                                 onChange={event => setPassword(event.target.value)}                         
                             />

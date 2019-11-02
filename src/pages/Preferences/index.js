@@ -6,7 +6,15 @@ export default function Preferences() {
     return (
         <>
             <div className="preferenceswrapper">
-                <Navmenu/>            
+                <Navmenu/> 
+                <div className="painel">
+                    <div className="paineloptions">
+                        
+                    </div>
+                    <div className="painelscreen">
+
+                    </div>
+                </div>           
                 
             </div>
         </>
