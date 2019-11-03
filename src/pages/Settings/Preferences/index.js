@@ -1,6 +1,10 @@
 import React from 'react';
+
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
+import SettingsPainel from '../../../components/SettingsPainel';
+
+import './styles.css';
 
 export default function Preferences() {
     return (
@@ -12,7 +16,9 @@ export default function Preferences() {
                         <SettingsNav />
                     </div>
                     <div className="painelscreen">
+                        <SettingsPainel title={"Preferences"}>
 
+                        </SettingsPainel>
                     </div>
                 </div>           
                 

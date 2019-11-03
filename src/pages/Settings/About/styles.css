@@ -1,0 +1,11 @@
+.aboutwrapper > .painel {
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+}
+
+.aboutwrapper > .painel > .painelscreen > .preferencestext {
+    width: 750px;
+    margin-left:20px;
+    padding-top:5px; 
+}

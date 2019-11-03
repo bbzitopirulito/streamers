@@ -13,6 +13,9 @@ const SettingsNav = () => (
         <div className="settingsmenuitem">
             <Link to="/settings/preferences">Preferences</Link>
         </div>
+        <div className="settingsmenuitem">
+            <Link to="/settings/about">About</Link>
+        </div>
     </NavSettings>
 );
 

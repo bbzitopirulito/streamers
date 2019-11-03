@@ -1,8 +1,8 @@
 .settingsmenuitem {
     display: flex;
     align-items: center;    
-    height:50px;
+    height:38px;        
 }
-
-.settingsmenuitem > a {    
+.settingsmenuitem:not(:first-child) {
+    border-top:1px solid #d1d5da;
 }
