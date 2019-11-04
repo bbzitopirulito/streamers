@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
@@ -19,20 +20,12 @@ export default function About() {
                         <SettingsPainel title={"About"}>                            
                         </SettingsPainel>
                         <div className="preferencestext">
-                            <p>Lorem ipsum dolor sit amet, 
-                            consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et 
-                            dolore magna aliqua. Ut enim ad minim veniam, 
-                            quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat. 
-                            Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>Streamers is a platform where people can rate streamers and 
+                            comment about their stream so that they will be able to improve their performances.</p>
+                            <p>You can find the source code <a href="https://github.com/bbzitopirulito/streamers">here</a>.</p>
                         </div>
                     </div>
-                </div>           
-                
+                </div>                           
             </div>
     </>
     );
