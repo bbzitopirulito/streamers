@@ -11,6 +11,10 @@ const SettingsPainel = styled.div`
     p:first-child {
         padding:10px 0 10px 0;        
         font-size:24px;
+        ${props => props.color && ({
+            color:props.color,
+            fontWeight:"bold"
+        })};
     }
 `;
 

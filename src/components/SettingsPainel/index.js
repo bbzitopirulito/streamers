@@ -7,7 +7,7 @@ import './styles.css';
 class SettingsPainel extends React.Component {
     render() {
         return (
-            <SettingsPainelStyled className="settingspainelstyled">
+            <SettingsPainelStyled className="settingspainelstyled" color={this.props.color}>
                 <div className="title">
                     <p>{this.props.title}</p>                    
                 </div>
