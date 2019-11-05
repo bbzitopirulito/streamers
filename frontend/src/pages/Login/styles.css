@@ -1,0 +1,207 @@
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
+    color: black;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 27px;
+  }
+  
+input[type=checkbox]:after {
+    content: " ";
+    background-color: #9FFF9D;
+    display: inline-block;
+    visibility: visible;
+}
+  
+input[type=checkbox]:checked:after {
+    content: "\2714";
+}
+.loginwrapper > .all {          
+    position: absolute;        
+    width: 100%;
+    height: 100%;        
+    overflow: hidden;
+    background-color: rgb(36, 41, 46, 0.95);        
+}
+
+.loginwrapper {
+    position: absolute;        
+    width: 100%;
+    height: 100%;        
+    overflow: hidden;
+}
+
+
+.loginwrapper > .all > .form {
+    margin-top: 7%;
+    width: 420px;
+    height: auto;
+    background-color:#FFF;        
+    border-radius: 3px;   
+    padding: 25px;   
+}
+
+.loginwrapper > .all > .welcomeback h1 {
+    color: #FFF;
+}
+
+.loginwrapper > .all > .welcomeback p {
+    width: 450px;
+    text-align: initial;
+    font-size: 20px;
+    color:#959da5;  
+    padding-top:10px;        
+}
+
+@media screen and (min-width:1100px) {
+    .loginwrapper > .all > .welcomeback {
+        float: left;
+        margin-top:12%;
+    }
+}
+
+@media screen and (min-width:720px) {
+    .loginwrapper > .all > .welcomeback h1 {
+        font-size: 60px;
+        color:#FFF;
+    }
+}
+
+@media screen and (min-width: 1706px) {
+    .loginwrapper {
+        background: url('../../assets/offlinewallpaper.jpg') no-repeat;
+        background-size: cover;                        
+    }
+
+    .loginwrapper > .all > .form {
+        margin-left: 50%;   
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 20%;        
+    }
+}
+
+@media screen and (min-width:1275px) and (max-width: 1706px) {    
+    .loginwrapper > .all > .form {
+        margin-left: 52%;
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 15%;        
+    }
+}
+
+@media screen and (min-width:1225px) and (max-width:1275px) {
+    .loginwrapper > .all > .form {
+        margin-left: 60%;
+    }
+    
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 4%;        
+    }
+}
+
+@media screen and (min-width:1100px) and (max-width:1225px) {
+    .loginwrapper > .all > .form {
+        margin-left: 60%; 
+    }
+    
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 3%;        
+    }
+}
+
+@media screen and (min-width:1020px) and (max-width: 1100px) {
+    .loginwrapper > .all > .form {
+        margin-left: 30%; 
+    }
+    
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 22%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1020px) {
+    .loginwrapper > .all > .form {
+        margin-left: 28%;
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (max-width:850px) and (min-width: 720px) {
+    .loginwrapper > .all > .form {
+        margin-left: 24%; 
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 14%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 620px) and (max-width:720px) {
+    .loginwrapper > .all > .form {
+        margin-left: 17%;
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 14%;
+        margin-top: 5%;
+    }
+
+    .loginwrapper > .all > .welcomeback h1 {
+        font-size: 40px;        
+    }
+
+    .loginwrapper > .all > .welcomeback p {
+        width: 500px;        
+        font-size: 14px;      
+    }
+}
+
+@media screen and (min-width:550px) and (max-width: 620px) {
+    .loginwrapper > .all > .form {
+        margin-left: 13%;
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+
+    .loginwrapper > .all > .welcomeback h1 {
+        font-size: 40px;        
+    }
+
+    .loginwrapper > .all > .welcomeback p {
+        width: 450px;        
+        font-size: 14px;                   
+    }
+}
+
+@media screen and (max-width:550px) {
+    .loginwrapper > .all > .form {        
+        width: 100%;
+    }
+
+    .loginwrapper > .all > .welcomeback {                
+        margin-left: 11%;
+        margin-top: 5%;
+    }
+
+    .loginwrapper > .all > .welcomeback h1 {
+        font-size: 40px;        
+    }
+
+    .loginwrapper > .all > .welcomeback p {
+        width: 350px;        
+        font-size: 14px;                 
+    }
+}

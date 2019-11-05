@@ -1,0 +1,16 @@
+.preferenceswrapper > .painel {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.preferenceswrapper > .painel > .painelscreen > .form > form {
+    padding-top: 15px;
+    margin-left: 20px;
+}
+
+.preferenceswrapper > .painel > .painelscreen > .form > form > select {
+    width: 400px;
+    height: 35px;
+    background-color:#fafbfc;
+}

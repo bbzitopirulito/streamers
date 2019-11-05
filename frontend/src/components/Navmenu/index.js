@@ -19,13 +19,11 @@ const Navmenu = () => (
             <Link to="/feed">Home</Link>
         </div>           
         <div className="menuitem">
-            <Link to="/">Log out</Link>
+            <Link to="/login">Log out</Link>
         </div>
         <div className="menuitem">
             <Link to="/settings/preferences">Preferences</Link>
-        </div>
-            
-        
+        </div>                    
     </Nav>
 );
 

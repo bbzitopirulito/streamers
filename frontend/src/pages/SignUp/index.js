@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import './styles.css';
 
 export default function SingUp({ history }) {
@@ -60,6 +62,8 @@ export default function SingUp({ history }) {
                             </select>
 
                             <button className="btn" type="submit">Sign Up</button>
+
+                            <p>Already have an account? <Link to="/login">Log In!</Link></p>
                         </form>
                     </div>
                 </div>

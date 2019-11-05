@@ -66,7 +66,7 @@ export default function Profile() {
                         <SettingsPainel title={"Delete account"} color={"#cb2431"} />                      
                         <div className="deleteaccount">
                             <p className="deletetext">I heard a story from the friend of my friend's friend that after a friend of his pressed this button,<br></br> 
-                            he started to suffer from a disease called "highpingingame", so he could never play online again...</p>
+                            he started to suffer from a disease called "highPingInGame", so he could never play online again...</p>
                             <button className="profilebtn deletebtn" type="submit">Delete profile</button>  
                         </div>
                     </div>

@@ -13,10 +13,5 @@
 }
 
 .aboutwrapper > .painel > .painelscreen > .preferencestext  a {
-    font-size: 12px;
-    color:#0366d6;
-}
-
-.aboutwrapper > .painel > .painelscreen > .preferencestext a:hover {
-    text-decoration: underline;
+    font-size: 12px;    
 }

@@ -13,6 +13,11 @@ html, body, #root {
 
 a {
     text-decoration: none;
+    color:#0366d6;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 body, input, button, select, label, a {

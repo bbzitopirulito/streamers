@@ -10,7 +10,7 @@
     padding-bottom:50px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form > input select {
+.profilewrapper > .painel > .painelscreen > .form > form > input, .profilewrapper > .painel > .painelscreen > .form > form > select {
     width: 400px;
     height: 35px;
     background-color:#fafbfc;
@@ -54,6 +54,6 @@
     margin-bottom: 8px;
 }
 
-.profilewrapper > .painel > .painelscreen > .deleteaccount > .deletetext {
-    padding-bottom:15px;
+.profilewrapper > .painel > .painelscreen > .deleteaccount > .deletebtn, .profilewrapper > .painel > .painelscreen > .form > form > .profilebtn  {
+    margin-top: 15px;
 }
