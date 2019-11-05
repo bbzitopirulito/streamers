@@ -16,8 +16,7 @@
     background-color:#fafbfc;
 }
 
-.profilewrapper > .painel > .painelscreen .deleteaccount p form > p {
-    padding-bottom:15px;  
+.profilewrapper > .painel > .painelscreen > .deleteaccount > .deletetext, .profilewrapper > .painel > .painelscreen > .form > form > p {    
     color:#586069;
     font-size: 12px;
 }

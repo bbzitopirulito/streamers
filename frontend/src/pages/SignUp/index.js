@@ -63,7 +63,9 @@ export default function SingUp({ history }) {
 
                             <button className="btn" type="submit">Sign Up</button>
 
-                            <p>Already have an account? <Link to="/login">Log In!</Link></p>
+                            <div className="login">
+                                <p>Already have an account? <Link to="/login">Log In!</Link></p>
+                            </div>
                         </form>
                     </div>
                 </div>

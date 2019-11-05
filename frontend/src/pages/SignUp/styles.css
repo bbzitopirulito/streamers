@@ -22,6 +22,14 @@
     padding: 25px;   
 }
 
+.signupwrapper > .all > .form > form > .login {
+    margin-top:5px;
+    display: flex;
+    justify-content: center;
+    color:#586069;
+    font-size: 12px;
+}
+
 .signupwrapper > .all > .about h1 {
     color: #FFF;
 }

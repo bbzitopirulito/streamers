@@ -5,10 +5,15 @@ import './styles.css';
 export default function Login({history}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [keeploggedin, setKeepLoggedIn] = useState(false);
 
     async function handleSubmit(event) {        
         event.preventDefault();
         history.push('/feed');
+    }
+
+    function checkvalue() {
+        console.log(keeploggedin)
     }
 
     return (
@@ -37,8 +42,15 @@ export default function Login({history}) {
                                 value={password} 
                                 onChange={event => setPassword(event.target.value)}                         
                             />
-                            <label htmlFor="platform">Keep me logged in!</label> 
-                            <input type="checkbox" name="loggedin" id="loggedin"/>
+                            <div className="keeploggedin">
+                                <input 
+                                    type="checkbox"                                 
+                                    name="loggedin" 
+                                    id="loggedin"                                    
+                                    onChange={event => setKeepLoggedIn(event.target.checked)}
+                                />
+                                <label htmlFor="platform">Keep me logged in!</label> 
+                            </div>
 
                             <button className="btn" type="submit">Log In</button>
                         </form>

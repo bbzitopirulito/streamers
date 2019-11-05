@@ -1,22 +1,3 @@
-input[type=checkbox] {
-    width: 30px;
-    height: 30px;
-    color: black;
-    margin-right: 8px;
-    cursor: pointer;
-    font-size: 27px;
-  }
-  
-input[type=checkbox]:after {
-    content: " ";
-    background-color: #9FFF9D;
-    display: inline-block;
-    visibility: visible;
-}
-  
-input[type=checkbox]:checked:after {
-    content: "\2714";
-}
 .loginwrapper > .all {          
     position: absolute;        
     width: 100%;
@@ -32,9 +13,18 @@ input[type=checkbox]:checked:after {
     overflow: hidden;
 }
 
+.loginwrapper > .all > .form > form > .keeploggedin {
+    display: inline-flex;
+}
+
+.loginwrapper > .all > .form > form > .keeploggedin > input {
+    width: 20px;
+    height: 20px;    
+    margin-right: 5px;
+}
 
 .loginwrapper > .all > .form {
-    margin-top: 7%;
+    margin-top: 9%;
     width: 420px;
     height: auto;
     background-color:#FFF;        
@@ -53,6 +43,8 @@ input[type=checkbox]:checked:after {
     color:#959da5;  
     padding-top:10px;        
 }
+
+
 
 @media screen and (min-width:1100px) {
     .loginwrapper > .all > .welcomeback {
