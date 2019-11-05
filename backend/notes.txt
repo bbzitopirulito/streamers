@@ -1,0 +1,8 @@
+Notes:
+
+- express: Used to the app's routes.
+- mongoose: Used to connect to a mongoDB database and make it's operations (like put, post, get, delete...).
+- cors: Used to make requests to different web domains.
+- path: Used to work with file and directory paths.
+- socketio: Used for real-time communication between the browser and the server.
+- http: Used to support many features of the protocol which have been traditionally difficult to use.
