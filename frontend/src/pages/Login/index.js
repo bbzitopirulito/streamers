@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
+import api from '../../services/api';
+
 import './styles.css';
 
-export default function Login({history}) {
+export default function Login({ history }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [keeploggedin, setKeepLoggedIn] = useState(false);
 
     async function handleSubmit(event) {        
         event.preventDefault();
-        history.push('/feed');
-    }
+        
+        const response = await api.get('./user', { 
+            email,
+            password                                     
+        });
 
-    function checkvalue() {
-        console.log(keeploggedin)
+        history.push('/feed');
     }
 
     return (

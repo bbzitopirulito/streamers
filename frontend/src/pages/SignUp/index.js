@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import api from '../../services/api';
+
 import './styles.css';
 
 export default function SingUp({ history }) {
@@ -11,6 +13,17 @@ export default function SingUp({ history }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
+
+        const response = await api.post('./users', {
+            email,
+            username,
+            password,
+            platform
+        });
+        
+        const { _id } = response.data;
+
+        localStorage.setItem('user', _id);        
 
         history.push('/feed');
     }
