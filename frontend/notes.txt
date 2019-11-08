@@ -1,3 +1,0 @@
-things to do before going to the backend:
-- create login 
-- finnish settings' frontend (done)

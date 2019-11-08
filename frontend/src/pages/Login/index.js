@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -59,6 +60,9 @@ export default function Login({ history }) {
                             </div>
 
                             <button className="btn" type="submit">Log In</button>
+                            <div className="signup">
+                                <p>Already have an account? <Link to="/login">Log In!</Link></p>
+                            </div>
                         </form>
                     </div>
                 </div>

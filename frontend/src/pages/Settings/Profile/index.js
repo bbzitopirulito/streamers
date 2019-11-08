@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
@@ -7,13 +7,18 @@ import SettingsPainel from '../../../components/SettingsPainel';
 import default_user_image from '../../../assets/default_user_image.jpg';
 
 import './styles.css';
+import localStorageUser from '../../../auth/localStorageUser/index';
 
-export default function Profile() {
+export default function Profile({ history }) {
     const [newusername, setNewUsername] = useState("");
     const [newpassword, setNewPassword] = useState("");
     const [newplatform, setNewPlatform] = useState("");
 
     //search about svg, redux and next.js in order
+
+    useEffect(() => {
+        localStorageUser.checkLocalStorageUser(history);
+    }, []);
 
     async function handleSubmit(event) {
         event.preventDefault();

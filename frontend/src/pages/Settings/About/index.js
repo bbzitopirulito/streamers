@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navmenu from '../../../components/Navmenu';
@@ -6,8 +6,14 @@ import SettingsNav from '../../../components/SettingsNav';
 import SettingsPainel from '../../../components/SettingsPainel';
 
 import './styles.css';
+import localStorageUser from '../../../auth/localStorageUser/index';
 
-export default function About() {
+export default function About({ history }) {
+
+    useEffect(() => {
+        localStorageUser.checkLocalStorageUser(history);
+    }, []);
+
     return (
         <>
             <div className="aboutwrapper">

@@ -37,5 +37,15 @@ module.exports = {
         }        
 
         return res.json(user);
+    },
+
+    async update(req, res) {
+        const { user_id, newusername, newpassword, newplatform } = req.headers;
+
+        const user = await User.updateOne({_id:user_id}, {
+            $set: { username: newusername, password: newpassword, platform: newplatform }
+        })       
+        console.log(user)
+        return res.json(user);
     }
 };

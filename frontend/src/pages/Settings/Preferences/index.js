@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
 import SettingsPainel from '../../../components/SettingsPainel';
 
 import './styles.css';
+import localStorageUser from '../../../auth/localStorageUser/index';
 
-export default function Preferences() {
+export default function Preferences({ history }) {
     const [colorTheme, setColorTheme] = useState('white');
     const [accountPrivacy, setAccountPrivacy] = useState('public');
+
+    useEffect(() => {
+        localStorageUser.checkLocalStorageUser(history);
+    }, []);
 
     async function handleSubmit() {
 

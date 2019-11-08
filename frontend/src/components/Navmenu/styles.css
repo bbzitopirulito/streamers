@@ -23,6 +23,15 @@
     
 }
 
+.menu > .searchicon > button {
+    background-color: Transparent;
+    border: none;
+}
+
+.menu > .searchicon {
+    margin-top: 4px;
+}
+
 .menu > .menuitem {
     padding:10px;    
 }
