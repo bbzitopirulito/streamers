@@ -10,12 +10,14 @@ export default function Login({ history }) {
     const [keeploggedin, setKeepLoggedIn] = useState(false);
 
     async function handleSubmit(event) {        
-        event.preventDefault();
-        
-        const response = await api.get('./user', { 
-            email,
-            password                                     
+        event.preventDefault();        
+        const response = await api.get('./user', {
+            headers: { email, password }
         });
+
+        const { _id } = response.data;
+
+        localStorage.setItem('user', _id);         
 
         history.push('/feed');
     }

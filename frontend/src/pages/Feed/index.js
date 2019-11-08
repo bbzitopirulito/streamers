@@ -6,7 +6,9 @@ import api from '../../services/api';
 import './styles.css';
 
 export default function Feed() {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     useEffect(() => {
         async function loadNames() {
@@ -14,7 +16,8 @@ export default function Feed() {
             const response = await api.get('/userbyid', {
                 headers: { user_id } 
             });
-            setName(response.data.username);
+                        
+            setUsername(response.data.username);
         }
         loadNames()
     }, []);
@@ -24,7 +27,9 @@ export default function Feed() {
             <div className='feedwrapper'>
                 <Navmenu/>      
                 <div className="feed">
-                    <h1>{name}</h1>
+                    <div className="welcomeback">
+                        <h1>{username}</h1>
+                    </div>
                 </div>
             </div>
             

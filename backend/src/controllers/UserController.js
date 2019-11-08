@@ -13,9 +13,10 @@ module.exports = {
                 password,
                 platform,
             })
+            return res.json(user);
         }        
+        return res.json("exists");
 
-        return res.json(user);
     },
 
     async showById(req, res) {
@@ -27,14 +28,13 @@ module.exports = {
     },
 
     async getUser(req, res) {
-        const { email, password } = req.body;
+        const { email, password } = req.headers;
 
         const user = await User.findOne().where('email').equals(email).where('password').equals(password);
 
         if(!user) {
             return [];
-        }
-        console.log(user);
+        }        
 
         return res.json(user);
     }

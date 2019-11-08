@@ -20,12 +20,16 @@ export default function SingUp({ history }) {
             password,
             platform
         });
-        
-        const { _id } = response.data;
-
-        localStorage.setItem('user', _id);        
-
-        history.push('/feed');
+                
+        if(response.data === "exists") {
+            alert('User already exists')
+        } else {
+            const { _id } = response.data;
+    
+            localStorage.setItem('user', _id);        
+    
+            history.push('/feed');
+        }
     }
 
     return (
