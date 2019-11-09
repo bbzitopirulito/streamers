@@ -8,20 +8,58 @@ import default_user_image from '../../../assets/default_user_image.jpg';
 
 import './styles.css';
 import localStorageUser from '../../../auth/localStorageUser/index';
+import api from '../../../services/api';
 
 export default function Profile({ history }) {
-    const [newusername, setNewUsername] = useState("");
-    const [newpassword, setNewPassword] = useState("");
-    const [newplatform, setNewPlatform] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [platform, setPlatform] = useState("");    
+    const [passwordConfirm, setPasswordConfirm] = useState("");
+    let differentPassword = false;    
+    let user_id = '';
 
     //search about svg, redux and next.js in order
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
+        user_id = localStorage.getItem('user');
+        async function setUserVariables() {
+            const rawUser = await api.get('./userbyid', {
+                headers: { user_id }
+            })
+            const user = rawUser.data;
+            setUsername(user.username);
+            setPassword(user.password);
+            setPlatform(user.platform);
+        }
+        setUserVariables();
     }, []);
 
     async function handleSubmit(event) {
         event.preventDefault();
+
+        const updatedUser = await api.put('/updateuser', {
+            headers: {
+                user_id,
+                newusername: username,
+                newpassword: password, 
+                newplatform: platform
+            }
+        });
+
+        alert(updatedUser + "user updated")
+
+        console.log()
+
+        history.push('/settings/profile');
+    }
+
+    function comparePasswords(confirmPassword) {
+        if(confirmPassword !== password) {
+            differentPassword = true;
+        } else {
+            differentPassword = false;
+        }
     }
 
     return (
@@ -40,18 +78,29 @@ export default function Profile({ history }) {
                                 <input 
                                     type="text" 
                                     id="username"                                 
-                                    value={newusername} 
-                                    onChange={event => setNewUsername(event.target.value)} 
+                                    value={username} 
+                                    onChange={event => setUsername(event.target.value)} 
                                 />
                                 <label htmlFor="password">Password</label> 
                                 <input 
                                     type="password" 
                                     id="password"                                 
-                                    value={newpassword}  
-                                    onChange={event => setNewPassword(event.target.value)}                         
+                                    value={password}  
+                                    onChange={event => setPassword(event.target.value)}                         
                                 />
+                                <label htmlFor="confirmpassword">Confirm password</label> 
+                                <input 
+                                    type="password" 
+                                    id="confirmpassword"                                 
+                                    value={passwordConfirm}
+                                    onChange={event => setPasswordConfirm(event.target.value)}
+                                    onPointerOut={() => comparePasswords(passwordConfirm)}                  
+                                />                                
+                                {/* <div className="differentpasswords">
+                                    <p>Different passwords</p>
+                                </div>                                 */}
                                 <label htmlFor="platform">Platform</label> 
-                                <select value={newplatform} id="platform" onChange={event => setNewPlatform(event.target.value)}>
+                                <select value={platform} id="platform" onChange={event => setPlatform(event.target.value)}>
                                     <option value="twitch">Twitch</option>                    
                                     <option value="mixer">Mixer</option>                    
                                     <option value="hitbox">Hitbox</option>                    

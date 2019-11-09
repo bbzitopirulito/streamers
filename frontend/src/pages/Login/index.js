@@ -61,7 +61,7 @@ export default function Login({ history }) {
 
                             <button className="btn" type="submit">Log In</button>
                             <div className="signup">
-                                <p>Don't have an account? <Link to="/login">Sign Up!</Link></p>
+                                <p>Don't have an account? <Link to="/">Sign Up!</Link></p>
                             </div>
                         </form>
                     </div>

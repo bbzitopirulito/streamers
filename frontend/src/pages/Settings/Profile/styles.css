@@ -21,6 +21,16 @@
     font-size: 12px;
 }
 
+.profilewrapper > .painel > .painelscreen > .form > form > .differentpasswords > p {    
+    color:#f00;
+    font-weight: bold;
+    font-size:15px;
+}
+
+.profilewrapper > .painel > .painelscreen > .form > form > .differentpasswords {    
+    padding-bottom: 15px;
+}
+
 .profilewrapper > .painel > .painelscreen > .form > form > p > strong {
     font-size: 20px;
     color:rgb(255, 217, 0);
