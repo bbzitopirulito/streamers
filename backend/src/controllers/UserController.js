@@ -42,10 +42,10 @@ module.exports = {
     async update(req, res) {
         const { user_id, newusername, newpassword, newplatform } = req.headers;
 
-        const user = await User.updateOne({_id:user_id}, {
+        await User.updateOne({_id:user_id}, {
             $set: { username: newusername, password: newpassword, platform: newplatform }
         })       
-        console.log(user)
+        const user = await User.findById(user_id);
         return res.json(user);
     }
 };

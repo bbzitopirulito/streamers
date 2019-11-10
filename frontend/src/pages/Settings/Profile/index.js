@@ -36,20 +36,26 @@ export default function Profile({ history }) {
     }, []);
 
     async function handleSubmit(event) {
-        event.preventDefault();
+        event.preventDefault();        
 
-        const updatedUser = await api.put('/updateuser', {
-            headers: {
-                user_id,
-                newusername: username,
-                newpassword: password, 
-                newplatform: platform
-            }
+        // const response = await api.put('./updateuser', {
+        //     headers: {
+        //         user_id,
+        //         newusername: username,
+        //         newpassword: password, 
+        //         newplatform: platform
+        //     }
+        // });
+
+        const response = await api.get('/userbyid', {
+            headers: { user_id }
         });
 
-        alert(updatedUser + "user updated")
+        const { _id } = response.data;
 
-        console.log()
+        localStorage.setItem('user', _id);            
+
+        console.log(response.data);
 
         history.push('/settings/profile');
     }
