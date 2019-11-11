@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
@@ -15,17 +15,17 @@ export default function Profile({ history }) {
     const [password, setPassword] = useState("");
     const [platform, setPlatform] = useState("");    
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    let differentPassword = false;    
-    let user_id = '';
+    let differentPassword = false;        
+    const user_id = useRef();
 
     //search about svg, redux and next.js in order
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
-        user_id = localStorage.getItem('user');
+        user_id.current = localStorage.getItem('user');        
         async function setUserVariables() {
             const rawUser = await api.get('./userbyid', {
-                headers: { user_id }
+                headers: { user_id: user_id.current }
             })
             const user = rawUser.data;
             setUsername(user.username);
@@ -36,28 +36,18 @@ export default function Profile({ history }) {
     }, []);
 
     async function handleSubmit(event) {
-        event.preventDefault();        
+        event.preventDefault();                
 
-        // const response = await api.put('./updateuser', {
-        //     headers: {
-        //         user_id,
-        //         newusername: username,
-        //         newpassword: password, 
-        //         newplatform: platform
-        //     }
-        // });
-
-        const response = await api.get('/userbyid', {
-            headers: { user_id }
+        const response = await api.put('./updateuser', {
+             user_id: user_id.current , username, password, platform 
         });
+        // I'll change this verification 
+        if(response.data === 'Username or password already used by another user.') {
+            alert(response.data);
+            window.location.reload();
+        }        
 
-        const { _id } = response.data;
-
-        localStorage.setItem('user', _id);            
-
-        console.log(response.data);
-
-        history.push('/settings/profile');
+        window.location.reload();        
     }
 
     function comparePasswords(confirmPassword) {

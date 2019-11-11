@@ -40,12 +40,21 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { user_id, newusername, newpassword, newplatform } = req.headers;
+        const { user_id, username, password, platform } = req.body;
 
-        await User.updateOne({_id:user_id}, {
-            $set: { username: newusername, password: newpassword, platform: newplatform }
-        })       
-        const user = await User.findById(user_id);
-        return res.json(user);
+        const usedUsername = await User.findOne( {_id: {$ne: user_id}} ).where('username').equals(username);
+        const usedPassword = await User.findOne( {_id: {$ne: user_id}} ).where('password').equals(password);
+
+        if(usedUsername === null && usedPassword === null) {                    
+            await User.updateOne({_id:user_id}, {
+                $set: { username, password, platform }
+            });               
+
+            const user = await User.findById(user_id);
+            
+            return res.json(user);            
+        } else {
+            return res.json('Username or password already used by another user.')
+        }        
     }
 };
