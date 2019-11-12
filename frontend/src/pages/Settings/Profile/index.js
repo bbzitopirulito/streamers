@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 import Navmenu from '../../../components/Navmenu';
 import SettingsNav from '../../../components/SettingsNav';
 import SettingsPainel from '../../../components/SettingsPainel';
 
-import default_user_image from '../../../assets/default_user_image.jpg';
+import camera from '../../../assets/camera.svg';
 
 import './styles.css';
+
 import localStorageUser from '../../../auth/localStorageUser/index';
 import api from '../../../services/api';
 
 export default function Profile({ history }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [platform, setPlatform] = useState("");    
-    const [passwordConfirm, setPasswordConfirm] = useState("");     
+    const [platform, setPlatform] = useState(""); 
+    const [profilepic, setProfilepic] = useState(null);
     const user_id = useRef();
 
     //search about svg, redux and next.js in order
@@ -25,8 +26,8 @@ export default function Profile({ history }) {
         async function setUserVariables() {
             const rawUser = await api.get('./userbyid', {
                 headers: { user_id: user_id.current }
-            })
-            const user = rawUser.data;
+            });
+            const user = rawUser.data;            
             setUsername(user.username);
             setPassword(user.password);
             setPlatform(user.platform);
@@ -34,11 +35,21 @@ export default function Profile({ history }) {
         setUserVariables();
     }, []);
 
+    const preview = useMemo(() =>{
+        return profilepic ? URL.createObjectURL(profilepic) : null;
+    },[profilepic]);
+
     async function handleSubmit(event) {
         event.preventDefault();                
 
-        const response = await api.put('./updateuser', {
-             user_id: user_id.current , username, password, platform 
+        const data = new FormData();
+        data.append('profilepic', profilepic);
+        data.append('username', username);
+        data.append('password', password);
+        data.append('platform', platform)
+
+        const response = await api.put('./updateuser', data, {
+            headers: { user_id: user_id.current }
         });
         // I'll change this verification 
         if(response.data === 'Username or password already used by another user.') {
@@ -73,7 +84,7 @@ export default function Profile({ history }) {
                     <div className="painelscreen">
                         <SettingsPainel title={"Profile"} /> 
                         <div className="form">
-                            <form onSubmit={handleSubmit}>                                        
+                            <form onSubmit={handleSubmit} encType="multipart/form-data">                                        
                                 <label htmlFor="username">Username</label> 
                                 <input 
                                     type="text" 
@@ -100,10 +111,17 @@ export default function Profile({ history }) {
                                 <p><strong>WARNING!</strong> You will only be able to change it again in 6 months.</p>
                                 <button className="profilebtn" type="submit">Update profile</button>
                             </form>  
+
                             <div className="profileimage">
-                                <label htmlFor="profileimage">Profile image</label>
-                                <img id="profileimage" src={default_user_image} width={200} />
-                            </div>                     
+                                <label 
+                                    id="profilepic"
+                                    style={{backgroundImage: `url(${preview})`}}
+                                    className={profilepic ? 'has-thumbnail' : ''}                                    
+                                >
+                                    <input name="profilepic" type="file" onChange={event => setProfilepic(event.target.files[0])} />
+                                    <img src={camera} alt="Select img"/>
+                                </label>               
+                            </div>      
                         </div>  
 
                         <SettingsPainel title={"Delete account"} color={"#cb2431"} />                      

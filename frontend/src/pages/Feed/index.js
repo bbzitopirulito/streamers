@@ -5,11 +5,13 @@ import api from '../../services/api';
 import localStorageUser from '../../auth/localStorageUser/index';
 
 import './styles.css';
+import FeedContainer from '../../components/Styled/FeedContainer';
 
 export default function Feed({ history }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [themeColor, setThemeColor] = useState("");
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
@@ -18,7 +20,7 @@ export default function Feed({ history }) {
             const response = await api.get('/userbyid', {
                 headers: { user_id } 
             });
-                        
+            setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
             setUsername(response.data.username);
         }
         loadNames();
@@ -26,14 +28,14 @@ export default function Feed({ history }) {
 
     return (
         <>                        
-            <div className='feedwrapper'>
-                <Navmenu/>      
-                <div className="feed">
+            <FeedContainer className="feedwrapper" color={themeColor}>
+                <div className='feed'>
+                    <Navmenu/>      
                     <div className="welcomeback">
                         <h1>{username}</h1>
                     </div>
                 </div>
-            </div>
+            </FeedContainer>                
             
         </>
     );

@@ -1,2 +1,2 @@
 next steps:
-- implement delete account and preferences
+- implement profile picture
