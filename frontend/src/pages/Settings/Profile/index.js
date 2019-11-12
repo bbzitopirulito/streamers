@@ -14,8 +14,7 @@ export default function Profile({ history }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [platform, setPlatform] = useState("");    
-    const [passwordConfirm, setPasswordConfirm] = useState("");
-    let differentPassword = false;        
+    const [passwordConfirm, setPasswordConfirm] = useState("");     
     const user_id = useRef();
 
     //search about svg, redux and next.js in order
@@ -50,12 +49,17 @@ export default function Profile({ history }) {
         window.location.reload();        
     }
 
-    function comparePasswords(confirmPassword) {
-        if(confirmPassword !== password) {
-            differentPassword = true;
-        } else {
-            differentPassword = false;
-        }
+    async function deleteAccount() {
+        console.log(user_id.current);
+        const response = await api.delete('./deleteuser', {
+            headers: {user_id: user_id.current}
+        });
+        alert(response.data); 
+        console.log(response.data);
+                
+        localStorage.removeItem('user');
+
+        window.location.reload();
     }
 
     return (
@@ -83,18 +87,7 @@ export default function Profile({ history }) {
                                     id="password"                                 
                                     value={password}  
                                     onChange={event => setPassword(event.target.value)}                         
-                                />
-                                <label htmlFor="confirmpassword">Confirm password</label> 
-                                <input 
-                                    type="password" 
-                                    id="confirmpassword"                                 
-                                    value={passwordConfirm}
-                                    onChange={event => setPasswordConfirm(event.target.value)}
-                                    onPointerOut={() => comparePasswords(passwordConfirm)}                  
-                                />                                
-                                {/* <div className="differentpasswords">
-                                    <p>Different passwords</p>
-                                </div>                                 */}
+                                />                               
                                 <label htmlFor="platform">Platform</label> 
                                 <select value={platform} id="platform" onChange={event => setPlatform(event.target.value)}>
                                     <option value="twitch">Twitch</option>                    
@@ -117,7 +110,7 @@ export default function Profile({ history }) {
                         <div className="deleteaccount">
                             <p className="deletetext">I heard a story from the friend of my friend's friend that after a friend of his pressed this button,<br></br> 
                             he started to suffer from a disease called "highPingInGame", so he could never play online again...</p>
-                            <button className="profilebtn deletebtn" type="submit">Delete profile</button>  
+                            <button className="profilebtn deletebtn" onClick={() => deleteAccount()} type="submit">Delete profile</button>  
                         </div>
                     </div>
                 </div>           

@@ -12,6 +12,9 @@ module.exports = {
                 username,
                 password,
                 platform,
+                private: false,
+                friends: [],
+                theme: 'light'
             })
             return res.json(user);
         }        
@@ -56,5 +59,24 @@ module.exports = {
         } else {
             return res.json('Username or password already used by another user.')
         }        
+    },
+
+    async delete(req, res) {
+        const { user_id } = req.headers;        
+
+        await User.deleteOne().where('_id').equals(user_id).then(() => {
+            return res.json('deleted');
+        });                
+    },
+
+    async setPreferences(req, res) {
+        const { user_id, theme, private } = req.body;
+
+        await User.updateOne({ _id: user_id }, {
+            $set: { theme, private }
+        });
+
+        const user = await User.findOne().where('_id').equals(user_id);
+        return res.json(user);
     }
 };

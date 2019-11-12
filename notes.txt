@@ -1,2 +1,2 @@
 next steps:
-- create user profile page
+- implement delete account and preferences
