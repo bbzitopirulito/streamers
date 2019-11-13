@@ -55,7 +55,7 @@
     margin-top: 15px;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#thumbnail {
+.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic {
     margin-bottom: 20px; 
     border: 1px dashed #ddd;
     background-size: cover;
@@ -68,14 +68,14 @@
     align-items: center;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#thumbnail input {
+.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic input {
     display: none;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#thumbnail.has-thumbnail {
+.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic {
     border: 0;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#thumbnail.has-thumbnail img {
+.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic img {
     display: none;
 }

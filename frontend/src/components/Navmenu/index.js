@@ -6,6 +6,8 @@ import Nav from '../Styled/Nav';
 import searchicon from '../../assets/search_icon.png';
 import liveIcon from '../../assets/live_icon.png';
 
+import default_user_image from '../../assets/default_user_image.jpg';
+
 import './styles.css';
 
 let searchText = '';
@@ -22,7 +24,7 @@ async function deleteLocalUserId(event) {
     localStorage.removeItem('user');    
 }
 
-const Navmenu = () => (
+const Navmenu = (props) => (
     <Nav className="menu">                     
         <div className="liveicon">
             <img src={liveIcon}  />                               
@@ -42,7 +44,16 @@ const Navmenu = () => (
         </div>
         <div className="menuitem">
             <Link to="/settings/preferences">Preferences</Link>
-        </div>                    
+        </div>
+        
+        <div className="menuitem profilepic">
+            {props.profilepicsrc ? 
+                <header style={{backgroundImage: `url(${props.profilepicsrc})`}} />                    
+            :
+                <header style={{backgroundImage: `url(${default_user_image})`}} />                    
+            }
+        </div>
+        
     </Nav>
 );
 

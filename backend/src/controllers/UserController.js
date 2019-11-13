@@ -54,7 +54,7 @@ module.exports = {
             await User.updateOne({_id:user_id}, {
                 $set: { username, password, platform, profilepic: filename }
             });               
-            console.log('entrou');
+            
             const user = await User.findById(user_id);
             
             return res.json(user);            

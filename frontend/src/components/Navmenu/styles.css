@@ -41,3 +41,16 @@
     font-size: 14px;
 }
 
+.menu > .menuitem > header {
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    border-radius: 4px;
+    float: right;
+}
+
+.menu > .profilepic {
+    margin-left: auto;
+    order: 2;
+}
+

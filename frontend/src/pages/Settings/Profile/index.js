@@ -16,6 +16,7 @@ export default function Profile({ history }) {
     const [password, setPassword] = useState("");
     const [platform, setPlatform] = useState(""); 
     const [profilepic, setProfilepic] = useState(null);
+    const [userpic, setUserpic] = useState("");
     const user_id = useRef();
 
     //search about svg, redux and next.js in order
@@ -27,7 +28,8 @@ export default function Profile({ history }) {
             const rawUser = await api.get('./userbyid', {
                 headers: { user_id: user_id.current }
             });
-            const user = rawUser.data;            
+            const user = rawUser.data;
+            setUserpic(user.profilepic_url)          
             setUsername(user.username);
             setPassword(user.password);
             setPlatform(user.platform);
@@ -76,7 +78,7 @@ export default function Profile({ history }) {
     return (
         <>
             <div className="profilewrapper">
-                <Navmenu /> 
+                <Navmenu profilepicsrc={userpic} /> 
                 <div className="painel">
                     <div className="paineloptions">
                         <SettingsNav />
@@ -116,7 +118,7 @@ export default function Profile({ history }) {
                                 <label 
                                     id="profilepic"
                                     style={{backgroundImage: `url(${preview})`}}
-                                    className={profilepic ? 'has-thumbnail' : ''}                                    
+                                    className={profilepic ? 'has-profilepic' : ''}                                    
                                 >
                                     <input name="profilepic" type="file" onChange={event => setProfilepic(event.target.files[0])} />
                                     <img src={camera} alt="Select img"/>

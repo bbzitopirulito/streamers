@@ -11,6 +11,11 @@ import api from '../../../services/api';
 export default function Preferences({ history }) {
     const [theme, setTheme] = useState('light');
     const [privacy, setPrivacy] = useState('public');
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [themeColor, setThemeColor] = useState("");
+    const [profilepic, setProfilepic] = useState("");
     const user_id = useRef();
 
     useEffect(() => {
@@ -23,6 +28,16 @@ export default function Preferences({ history }) {
             setTheme(response.data.theme);
             setPrivacy((response.data.private ? 'private' : 'public'));            
         }
+        async function loadNames() {
+            const user_id = localStorage.getItem('user');
+            const response = await api.get('/userbyid', {
+                headers: { user_id } 
+            });            
+            setProfilepic(response.data.profilepic_url);
+            setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
+            setUsername(response.data.username);
+        }
+        loadNames();
         getPreferences();
     }, []);
 
@@ -39,7 +54,7 @@ export default function Preferences({ history }) {
     return (
         <>
             <div className="preferenceswrapper">
-                <Navmenu /> 
+                <Navmenu profilepicsrc={profilepic} /> 
                 <div className="painel">
                     <div className="paineloptions">
                         <SettingsNav />
