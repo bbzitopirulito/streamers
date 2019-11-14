@@ -77,7 +77,7 @@ export default function Profile({ history }) {
 
     return (
         <>
-            <div className="profilewrapper">
+            <div className="profilesettingswrapper">
                 <Navmenu profilepicsrc={userpic} /> 
                 <div className="painel">
                     <div className="paineloptions">
@@ -115,6 +115,7 @@ export default function Profile({ history }) {
                             </form>  
 
                             <div className="profileimage">
+                                <label id="profilepiclabel">Profile image</label>
                                 <label 
                                     id="profilepic"
                                     style={{backgroundImage: `url(${preview})`}}

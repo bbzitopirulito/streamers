@@ -47,11 +47,13 @@ const Navmenu = (props) => (
         </div>
         
         <div className="menuitem profilepic">
-            {props.profilepicsrc ? 
-                <header style={{backgroundImage: `url(${props.profilepicsrc})`}} />                    
-            :
-                <header style={{backgroundImage: `url(${default_user_image})`}} />                    
-            }
+            <Link to="/profile">
+                {props.profilepicsrc ? 
+                    <header style={{backgroundImage: `url(${props.profilepicsrc})`}} />
+                :
+                    <header style={{backgroundImage: `url(${default_user_image})`}} />                    
+                }
+            </Link>
         </div>
         
     </Nav>

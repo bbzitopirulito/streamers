@@ -41,7 +41,7 @@
     font-size: 14px;
 }
 
-.menu > .menuitem > header {
+.menu > .menuitem > a > header {
     width: 35px;
     height: 35px;
     background-size: cover;

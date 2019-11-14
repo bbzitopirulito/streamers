@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -9,6 +9,10 @@ export default function Login({ history }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [keeploggedin, setKeepLoggedIn] = useState(false);
+
+    useEffect(() => {
+        localStorage.removeItem('user');
+    }, []);
 
     async function handleSubmit(event) {        
         event.preventDefault();        

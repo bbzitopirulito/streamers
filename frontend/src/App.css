@@ -20,7 +20,7 @@ a:hover {
     text-decoration: underline;
 }
 
-body, input, button, select, label, a {
+body, input, button, select, label, a, h1 {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 14px;
 }

@@ -1,61 +1,65 @@
-.profilewrapper > .painel {
+.profilesettingswrapper > .painel {
     display: flex;
     justify-content: center;
     margin-top:20px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form {
+.profilesettingswrapper > .painel > .painelscreen > .form > form {
     padding-top:15px;
     margin-left:20px;
     padding-bottom:50px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form > input, .profilewrapper > .painel > .painelscreen > .form > form > select {
+.profilesettingswrapper > .painel > .painelscreen > .form > form > input, .profilesettingswrapper > .painel > .painelscreen > .form > form > select {
     width: 400px;
     height: 35px;
     background-color:#fafbfc;
 }
 
-.profilewrapper > .painel > .painelscreen > .deleteaccount > .deletetext, .profilewrapper > .painel > .painelscreen > .form > form > p {    
+.profilesettingswrapper > .painel > .painelscreen > .deleteaccount > .deletetext, .profilesettingswrapper > .painel > .painelscreen > .form > form > p {    
     color:#586069;
     font-size: 12px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form > .differentpasswords > p {    
+.profilesettingswrapper > .painel > .painelscreen > .form > form > .differentpasswords > p {    
     color:#f00;
     font-weight: bold;
     font-size:15px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form > .differentpasswords {    
+.profilesettingswrapper > .painel > .painelscreen > .form > form > .differentpasswords {    
     padding-bottom: 15px;
 }
 
-.profilewrapper > .painel > .painelscreen > .form > form > p > strong {
+.profilesettingswrapper > .painel > .painelscreen > .form > form > p > strong {
     font-size: 20px;
     color:rgb(255, 217, 0);
 }
 
-.profilewrapper > .painel > .painelscreen .deleteaccount  {
+.profilesettingswrapper > .painel > .painelscreen .deleteaccount  {
     margin-left:20px;
     padding-top:15px;    
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage {    
+.profilesettingswrapper > .painel > .painelscreen .profileimage {    
     margin-top:15px;
     margin-left:100px;
     float: right;
 }
 
-.profilewrapper > .painel > .painelscreen > .form {
+.profilesettingswrapper > .painel > .painelscreen > .form {
     display: flex;
 }
 
-.profilewrapper > .painel > .painelscreen > .deleteaccount > .deletebtn, .profilewrapper > .painel > .painelscreen > .form > form > .profilebtn  {
+.profilesettingswrapper > .painel > .painelscreen > .deleteaccount > .deletebtn, .profilesettingswrapper > .painel > .painelscreen > .form > form > .profilebtn  {
     margin-top: 15px;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic {
+.profilesettingswrapper > .painel > .painelscreen .profileimage  > label#profilepiclabel {
+    font-weight: bold;    
+}
+
+.profilesettingswrapper > .painel > .painelscreen .profileimage > label#profilepic {
     margin-bottom: 20px; 
     border: 1px dashed #ddd;
     background-size: cover;
@@ -68,14 +72,14 @@
     align-items: center;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic input {
+.profilesettingswrapper > .painel > .painelscreen .profileimage > label#profilepic input {
     display: none;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic {
+.profilesettingswrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic {
     border: 0;
 }
 
-.profilewrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic img {
+.profilesettingswrapper > .painel > .painelscreen .profileimage > label#profilepic.has-profilepic img {
     display: none;
 }

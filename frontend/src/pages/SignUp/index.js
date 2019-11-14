@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -10,6 +10,10 @@ export default function SingUp({ history }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [platform, setPlatform] = useState('twitch');
+
+    useEffect(() => {
+        localStorage.removeItem('user');
+    }, []);
 
     async function handleSubmit(event) {
         event.preventDefault();
