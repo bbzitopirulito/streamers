@@ -11,34 +11,22 @@ import api from '../../../services/api';
 export default function Preferences({ history }) {
     const [theme, setTheme] = useState('light');
     const [privacy, setPrivacy] = useState('public');
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [themeColor, setThemeColor] = useState("");
     const [profilepic, setProfilepic] = useState("");
     const user_id = useRef();
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
         user_id.current = localStorage.getItem('user');
-        async function getPreferences() {
-            const response = await api.get('./userbyid', {
-                headers: { user_id: user_id.current }
-            })
-            setTheme(response.data.theme);
-            setPrivacy((response.data.private ? 'private' : 'public'));            
-        }
-        async function loadNames() {
+        async function getUser() {
             const user_id = localStorage.getItem('user');
             const response = await api.get('/userbyid', {
                 headers: { user_id } 
             });            
-            setProfilepic(response.data.profilepic_url);
-            setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
-            setUsername(response.data.username);
+            setPrivacy((response.data.private ? 'private' : 'public'));            
+            setTheme(response.data.theme);
+            setProfilepic(response.data.profilepic_url);                                             
         }
-        loadNames();
-        getPreferences();
+        getUser();
     }, []);
 
     async function handleSubmit(event) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Nav from '../Styled/Nav';
@@ -10,17 +10,7 @@ import default_user_image from '../../assets/default_user_image.jpg';
 
 import './styles.css';
 
-let searchText = '';
-
-async function setSearchText(newText) {
-    searchText = newText;
-}
-
-async function search(text) {
-    
-}
-
-async function deleteLocalUserId(event) {    
+async function deleteLocalUserId() {    
     localStorage.removeItem('user');    
 }
 
@@ -31,16 +21,16 @@ const Navmenu = (props) => (
         </div>
 
         <div className="searchmenu">
-            <input type="text" name="searchmenu" onChange={(event) => setSearchText(event.target.value)} id="searchmenu"/>
+            <input type="text" name="searchmenu" onChange={console.log('search')} id="searchmenu"/>
         </div>
         <div className="menuitem searchicon">
-            <button><img src={searchicon} width={20} alt="" onClick={() => search(searchText)}/></button>
+            <button><img src={searchicon} width={20} alt="" onClick={console.log('click')}/></button>
         </div>
         <div className="menuitem">
             <Link to="/feed">Home</Link>
         </div>           
         <div className="menuitem">
-            <Link to="/login" onClick={(event) => deleteLocalUserId(event)}>Log out</Link>
+            <Link to="/login" onClick={(event) => deleteLocalUserId()}>Log out</Link>
         </div>
         <div className="menuitem">
             <Link to="/settings/preferences">Preferences</Link>

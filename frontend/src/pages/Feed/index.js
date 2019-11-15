@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Navmenu from '../../components/Navmenu';
+import FeedContainer from '../../components/Styled/FeedContainer';
+
 import api from '../../services/api';
 import localStorageUser from '../../auth/localStorageUser/index';
 
 import './styles.css';
-import FeedContainer from '../../components/Styled/FeedContainer';
 
 export default function Feed({ history }) {
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [themeColor, setThemeColor] = useState("");
     const [profilepic, setProfilepic] = useState("");
+    const user_id = useRef();
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
-        async function loadNames() {
-            const user_id = localStorage.getItem('user');
+        user_id.current = localStorage.getItem('user');
+        async function getUser() {            
             const response = await api.get('/userbyid', {
-                headers: { user_id } 
+                headers: { user_id: user_id.current } 
             });            
             setProfilepic(response.data.profilepic_url);
             setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
             setUsername(response.data.username);
         }
-        loadNames();
+        getUser();
     }, []);
 
     return (

@@ -3,11 +3,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navmenu from '../../components/Navmenu';
 
 import localStorageUser from '../../auth/localStorageUser';
-
 import api from '../../services/api';
 
-import './styles.css';
 import default_user_wallpaper from '../../assets/default_user_wallpaper.jpg';
+
+import './styles.css';
 
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");

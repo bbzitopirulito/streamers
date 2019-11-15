@@ -6,10 +6,10 @@ import SettingsPainel from '../../../components/SettingsPainel';
 
 import camera from '../../../assets/camera.svg';
 
-import './styles.css';
-
 import localStorageUser from '../../../auth/localStorageUser/index';
 import api from '../../../services/api';
+
+import './styles.css';
 
 export default function Profile({ history }) {
     const [username, setUsername] = useState("");
@@ -24,7 +24,7 @@ export default function Profile({ history }) {
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
         user_id.current = localStorage.getItem('user');        
-        async function setUserVariables() {
+        async function getUser() {
             const rawUser = await api.get('./userbyid', {
                 headers: { user_id: user_id.current }
             });
@@ -34,7 +34,7 @@ export default function Profile({ history }) {
             setPassword(user.password);
             setPlatform(user.platform);
         }
-        setUserVariables();
+        getUser();
     }, []);
 
     const preview = useMemo(() =>{
@@ -53,7 +53,7 @@ export default function Profile({ history }) {
         const response = await api.put('./updateuser', data, {
             headers: { user_id: user_id.current }
         });
-        // I'll change this verification 
+        // change this verification 
         if(response.data === 'Username or password already used by another user.') {
             alert(response.data);
             window.location.reload();
