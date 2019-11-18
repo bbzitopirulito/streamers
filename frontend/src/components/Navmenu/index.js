@@ -9,9 +9,21 @@ import liveIcon from '../../assets/live_icon.png';
 import default_user_image from '../../assets/default_user_image.jpg';
 
 import './styles.css';
+import api from '../../services/api';
+
+let searchUsername = '';
 
 async function deleteLocalUserId() {    
     localStorage.removeItem('user');    
+}
+
+async function searchUser() {
+    console.log(searchUsername);
+    const response = await api.get('./username', {
+        headers: { username: searchUsername }
+    });
+
+    console.log(response.data);
 }
 
 const Navmenu = (props) => (
@@ -21,10 +33,10 @@ const Navmenu = (props) => (
         </div>
 
         <div className="searchmenu">
-            <input type="text" name="searchmenu" onChange={console.log('search')} id="searchmenu"/>
+            <input type="text" name="searchmenu" onChange={(event) => searchUsername = event.target.value} id="searchmenu"/>
         </div>
         <div className="menuitem searchicon">
-            <button><img src={searchicon} width={20} alt="" onClick={console.log('click')}/></button>
+            <button onClick={() => searchUser()}><img src={searchicon} width={20} alt="search icon" /></button>
         </div>
         <div className="menuitem">
             <Link to="/feed">Home</Link>
@@ -38,10 +50,10 @@ const Navmenu = (props) => (
         
         <div className="menuitem profilepic">
             <Link to="/profile">
-                {props.profilepicsrc ? 
+                {props.profilepicsrc.indexOf("undefined") === -1 ? 
                     <header style={{backgroundImage: `url(${props.profilepicsrc})`}} />
                 :
-                    <header style={{backgroundImage: `url(${default_user_image})`}} />                    
+                    <header style={{backgroundImage: `url(${default_user_image})`}} />
                 }
             </Link>
         </div>

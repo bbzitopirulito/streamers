@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 module.exports = {
     async store(req, res) {
-        const { email, username, password, platform } = req.body;
+        const { email, username, password, platform } = req.body;            
 
         let user = await User.findOne({ email });
 
@@ -14,7 +14,7 @@ module.exports = {
                 platform,
                 private: false,
                 friends: [],
-                theme: 'light'
+                theme: 'light',                
             })
             return res.json(user);
         }        
@@ -42,10 +42,24 @@ module.exports = {
         return res.json(user);
     },
 
+    async getUsername(req, res) {
+        const { username } = req.headers;
+
+        console.log(username);
+
+        const user = await User.findOne().where('username').equals(username);
+
+
+        if(user) {
+            return res.json(user);
+        } 
+        return res.json("null");
+    },
+
     async update(req, res) {
         const { username, password, platform } = req.body;        
         const { user_id } = req.headers;
-        const { filename } = req.file;
+        const { filename } = req.file;        
 
         const usedUsername = await User.findOne( {_id: {$ne: user_id}} ).where('username').equals(username);
         const usedPassword = await User.findOne( {_id: {$ne: user_id}} ).where('password').equals(password);

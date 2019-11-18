@@ -20,7 +20,7 @@ export default function Feed({ history }) {
         async function getUser() {            
             const response = await api.get('/userbyid', {
                 headers: { user_id: user_id.current } 
-            });            
+            });                     
             setProfilepic(response.data.profilepic_url);
             setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
             setUsername(response.data.username);

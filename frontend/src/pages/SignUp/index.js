@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
+
+import default_user_image from '../../assets/default_user_image.jpg'
 
 import './styles.css';
 
@@ -9,21 +11,27 @@ export default function SingUp({ history }) {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [platform, setPlatform] = useState('twitch');
+    const [platform, setPlatform] = useState('twitch');  
+    const [profilepic, setProfilepic] = useState(null);
 
     useEffect(() => {
         localStorage.removeItem('user');
     }, []);
 
+    const preview = useMemo(() =>{
+        return profilepic ? URL.createObjectURL(profilepic) : null;
+    },[profilepic]);
+
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const response = await api.post('./users', {
-            email,
-            username,
-            password,
-            platform
-        });
+        const data = new FormData();
+        data.append('email', email);
+        data.append('username', username);
+        data.append('password', password);
+        data.append('platform', platform);        
+
+        const response = await api.post('./users', data);
                 
         if(response.data === "exists") {
             alert('User already exists')
@@ -80,7 +88,7 @@ export default function SingUp({ history }) {
                                 <option value="facebook">Facebook</option>                    
                                 <option value="youtube">Youtube</option>                    
                                 <option value="nimo">Nimo</option>                    
-                            </select>
+                            </select>                            
 
                             <button className="btn" type="submit">Sign Up</button>
 

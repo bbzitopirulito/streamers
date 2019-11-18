@@ -6,6 +6,7 @@ import localStorageUser from '../../auth/localStorageUser';
 import api from '../../services/api';
 
 import default_user_wallpaper from '../../assets/default_user_wallpaper.jpg';
+import default_user_image from '../../assets/default_user_image.jpg';
 
 import './styles.css';
 
@@ -36,7 +37,7 @@ export default function Profile({ history }) {
                         <div className="wallpaper" style={{backgroundImage: `url(${default_user_wallpaper})`}}>
                             <div className="profilepic">
                                 <div className="profilepicimg">
-                                    <header style={{backgroundImage: `url(${profilepic})`}} />
+                                    <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image )})`}} />
                                     <h1>{username}</h1>
                                 </div>
                             </div>                            
