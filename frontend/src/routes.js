@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Feed from './pages/Feed';
+import User from './pages/User';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
@@ -20,6 +21,7 @@ export default function Routes() {
                 <Route path="/settings/profile" component={ProfileSettings} />
                 <Route path="/settings/preferences" component={PreferencesSettings} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/user" component={User} />
             </Switch>
         </BrowserRouter>
     );

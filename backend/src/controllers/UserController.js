@@ -43,9 +43,7 @@ module.exports = {
     },
 
     async getUsername(req, res) {
-        const { username } = req.headers;
-
-        console.log(username);
+        const { username } = req.headers;        
 
         const user = await User.findOne().where('username').equals(username);
 

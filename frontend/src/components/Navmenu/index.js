@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Nav from '../Styled/Nav';
 
@@ -8,8 +8,10 @@ import liveIcon from '../../assets/live_icon.png';
 
 import default_user_image from '../../assets/default_user_image.jpg';
 
-import './styles.css';
 import api from '../../services/api';
+import history from '../../services/history/index';
+
+import './styles.css';
 
 let searchUsername = '';
 
@@ -17,13 +19,19 @@ async function deleteLocalUserId() {
     localStorage.removeItem('user');    
 }
 
-async function searchUser() {
-    console.log(searchUsername);
+async function searchUser() {    
     const response = await api.get('./username', {
         headers: { username: searchUsername }
-    });
+    });    
+    localStorage.setItem('searchUser', response.data._id)    ;
+    history.push('/user');
+    window.location.reload();
+}
 
-    console.log(response.data);
+function checkKey(e) {
+    if(e.key === "Enter") {
+        searchUser();
+    }
 }
 
 const Navmenu = (props) => (
@@ -32,9 +40,10 @@ const Navmenu = (props) => (
             <img src={liveIcon}  />                               
         </div>
 
-        <div className="searchmenu">
-            <input type="text" name="searchmenu" onChange={(event) => searchUsername = event.target.value} id="searchmenu"/>
+        <div className="searchmenu">            
+            <input type="text" name="searchmenu" onKeyPress={(event) => checkKey(event)} onChange={(event) => searchUsername = event.target.value} id="searchmenu"/>            
         </div>
+
         <div className="menuitem searchicon">
             <button onClick={() => searchUser()}><img src={searchicon} width={20} alt="search icon" /></button>
         </div>
