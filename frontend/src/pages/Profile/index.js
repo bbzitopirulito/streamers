@@ -26,7 +26,15 @@ export default function Profile({ history }) {
             setProfilepic(response.data.profilepic_url);
             setUsername(response.data.username);
         }
+        async function getFriends() {
+            const response = await api.get('/friends', {
+                headers: { user_id: user_id.current }
+            });
+
+            console.log(response.data)
+        }
         getUser();
+        getFriends();
     }, []);
 
     return (

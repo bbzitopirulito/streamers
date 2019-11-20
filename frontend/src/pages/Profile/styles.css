@@ -1,6 +1,7 @@
 .profilewrapper > .container {
-    display: flex;
-    justify-content: center;       
+    display:flex;                   
+    align-items: center;    
+    flex-direction: column;      
 }
 
 .profilewrapper > .container > .profile {
@@ -33,4 +34,15 @@
 
 .profilewrapper > .container > .profile > .wallpaper > .profilepic > .profilepicimg {
     margin-left: 30px;
+}
+
+.profilewrapper > .container > .friends {   
+    flex-direction: column;         
+    width: 800px;
+    height:50px;
+    border-bottom: 2px solid #d1d5da;
+    border-left: 2px solid #d1d5da;
+    border-right: 2px solid #d1d5da;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }

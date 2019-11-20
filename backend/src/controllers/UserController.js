@@ -110,4 +110,22 @@ module.exports = {
         const user = await User.findOne().where('_id').equals(user_id);
         return res.json(user);
     },
+
+    async getFriends(req, res) {
+        const { user_id } = req.headers;        
+
+        const user = await User.findOne().where('_id').equals(user_id);
+
+        let friendsIds = user.friends;
+                
+        let friends = [];        
+
+        await friendsIds.forEach(async function(friendId) {
+            let friend = await User.findOne().where('_id').equals(friendId);            
+            friends.push(friend);            
+        })
+        
+        console.log(friends)
+        return res.json(friends)
+    }
 };

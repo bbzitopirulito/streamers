@@ -1,3 +1,2 @@
 next steps:
 - finish profile page
-- clear unnecessary code
