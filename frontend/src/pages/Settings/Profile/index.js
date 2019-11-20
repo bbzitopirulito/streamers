@@ -23,6 +23,7 @@ export default function Profile({ history }) {
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
+        localStorage.removeItem('searchUser');
         user_id.current = localStorage.getItem('user');        
         async function getUser() {
             const rawUser = await api.get('./userbyid', {

@@ -1,0 +1,19 @@
+.profilewrapper > .container > .profile > .wallpaper > .addbtn { 
+    width: 800px;                  
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 30px 5px 0;
+}
+
+.profilewrapper > .container > .profile > .wallpaper > .addbtn > button {
+    width: 145px;
+    height: 40px;     
+}
+
+.profilewrapper > .container > .profile > .wallpaper > .addbtn > button.add {
+    background-color: #1da1f2;
+}
+
+.profilewrapper > .container > .profile > .wallpaper > .addbtn > button.remove {
+    background-color: #cb2431;
+}

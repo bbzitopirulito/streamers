@@ -15,13 +15,13 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/feed" component={Feed} />
+                <Route path="/user" component={User} />
                 <Route path="/login" component={Login} />
                 <Route path="/" exact component={SignUp} />
+                <Route path="/profile" component={Profile} />
                 <Route path="/settings/about" component={AboutSettings} />
                 <Route path="/settings/profile" component={ProfileSettings} />
                 <Route path="/settings/preferences" component={PreferencesSettings} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/user" component={User} />
             </Switch>
         </BrowserRouter>
     );

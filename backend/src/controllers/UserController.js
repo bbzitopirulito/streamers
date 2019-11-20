@@ -75,6 +75,23 @@ module.exports = {
         }        
     },
 
+    async updateFriends(req, res) {
+        const { friends, friendId } = req.body;
+        const { user_id } = req.headers;
+        
+        if(friends) {
+            await User.updateOne({_id:user_id}, {
+                $pull: { "friends":friendId }
+            })        
+            return res.json('removed');
+        } 
+
+        await User.updateOne({_id:user_id}, {
+            $push: { "friends":friendId }
+        })
+        return res.json('added');
+    },
+
     async delete(req, res) {
         const { user_id } = req.headers;        
 
@@ -92,5 +109,5 @@ module.exports = {
 
         const user = await User.findOne().where('_id').equals(user_id);
         return res.json(user);
-    }
+    },
 };

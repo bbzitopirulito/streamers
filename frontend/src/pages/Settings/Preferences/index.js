@@ -16,6 +16,7 @@ export default function Preferences({ history }) {
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
+        localStorage.removeItem('searchUser');
         user_id.current = localStorage.getItem('user');
         async function getUser() {
             const user_id = localStorage.getItem('user');

@@ -17,6 +17,7 @@ export default function Feed({ history }) {
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
         user_id.current = localStorage.getItem('user');
+        localStorage.removeItem('searchUser');
         async function getUser() {            
             const response = await api.get('/userbyid', {
                 headers: { user_id: user_id.current } 
