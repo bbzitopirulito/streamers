@@ -122,7 +122,7 @@ module.exports = {
 
         for (let i = 0; i < friendsIds.length; i++) {
             friends.push(await User.findOne().where('_id').equals(friendsIds[i]));
-        }
+        }        
                 
         return res.json(friends)
     }

@@ -13,9 +13,11 @@ import './styles.css';
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");
     const [username, setUsername] = useState("");
-    // const [friends, setFriends] = useState([]);
-    const friends = useRef([]);
-    const user_id = useRef();
+    const [friends, setFriends] = useState({});    
+    // const friends = useRef();
+    const user_id = useRef();      
+
+    let s ;
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
@@ -25,21 +27,29 @@ export default function Profile({ history }) {
             const response = await api.get('/userbyid', {
                 headers: { user_id: user_id.current }
             });            
+            s = response.data
             setProfilepic(response.data.profilepic_url);
             setUsername(response.data.username);
         }
         async function getFriends() {
             const response = await api.get('/friends', {
                 headers: { user_id: user_id.current }
-            });            
-            // setFriends(response.data);                        
-            friends.current = response.data;
+            });                           
+            // console.log(response.data[0])            
+            for (let i = 0; i < response.data.length; i++) {
+                setFriends([
+                     
+                    response.data[i]
+                ])
+            }
+            setFriends(response.data[0]);
         }
         getUser();
-        getFriends();    
-        console.log(friends)    
+        getFriends();                   
     }, []);
-
+        
+    console.log(friends)            
+    
     return (
         <>
             <div className="profilewrapper">
@@ -50,7 +60,8 @@ export default function Profile({ history }) {
                             <div className="profilepic">
                                 <div className="profilepicimg">
                                     <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image )})`}} />
-                                    <h1>{username}</h1>                                    
+                                    <h1>{username}</h1>  
+                                    <h1>{friends.username}</h1>
                                 </div>
                             </div>                            
                         </div>
