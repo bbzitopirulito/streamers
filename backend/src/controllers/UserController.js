@@ -120,12 +120,10 @@ module.exports = {
                 
         let friends = [];        
 
-        await friendsIds.forEach(async function(friendId) {
-            let friend = await User.findOne().where('_id').equals(friendId);            
-            friends.push(friend);            
-        })
-        
-        console.log(friends)
+        for (let i = 0; i < friendsIds.length; i++) {
+            friends.push(await User.findOne().where('_id').equals(friendsIds[i]));
+        }
+                
         return res.json(friends)
     }
 };

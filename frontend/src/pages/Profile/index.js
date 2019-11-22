@@ -13,6 +13,8 @@ import './styles.css';
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");
     const [username, setUsername] = useState("");
+    // const [friends, setFriends] = useState([]);
+    const friends = useRef([]);
     const user_id = useRef();
 
     useEffect(() => {
@@ -29,12 +31,13 @@ export default function Profile({ history }) {
         async function getFriends() {
             const response = await api.get('/friends', {
                 headers: { user_id: user_id.current }
-            });
-
-            console.log(response.data)
+            });            
+            // setFriends(response.data);                        
+            friends.current = response.data;
         }
         getUser();
-        getFriends();
+        getFriends();    
+        console.log(friends)    
     }, []);
 
     return (
@@ -47,7 +50,7 @@ export default function Profile({ history }) {
                             <div className="profilepic">
                                 <div className="profilepicimg">
                                     <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image )})`}} />
-                                    <h1>{username}</h1>
+                                    <h1>{username}</h1>                                    
                                 </div>
                             </div>                            
                         </div>
