@@ -13,8 +13,7 @@ import './styles.css';
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");
     const [username, setUsername] = useState("");
-    const [friends, setFriends] = useState({});    
-    // const friends = useRef();
+    const [friends, setFriends] = useState({});        
     const user_id = useRef();      
 
     let s ;
@@ -42,13 +41,15 @@ export default function Profile({ history }) {
                     response.data[i]
                 ])
             }
-            setFriends(response.data[0]);
+            setFriends(response.data);
         }
         getUser();
         getFriends();                   
     }, []);
+
+    // let { test } = friends[0];
         
-    console.log(friends)            
+    // console.log(test)            
     
     return (
         <>

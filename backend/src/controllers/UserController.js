@@ -31,12 +31,12 @@ module.exports = {
     },
 
     async getUser(req, res) {
-        const { email, password } = req.headers;
+        const { email, password } = req.headers;        
 
         const user = await User.findOne().where('email').equals(email).where('password').equals(password);
 
         if(!user) {
-            return [];
+            return res.json("does not exist");
         }        
 
         return res.json(user);
@@ -82,12 +82,20 @@ module.exports = {
         if(friends) {
             await User.updateOne({_id:user_id}, {
                 $pull: { "friends":friendId }
-            })        
+            })       
+            
+            await User.updateOne({_id:friendId}, {
+                $pull: { "friends": user_id }
+            })
             return res.json('removed');
         } 
 
         await User.updateOne({_id:user_id}, {
             $push: { "friends":friendId }
+        })
+
+        await User.updateOne({_id:friendId}, {
+            $push: { "friends": user_id }
         })
         return res.json('added');
     },

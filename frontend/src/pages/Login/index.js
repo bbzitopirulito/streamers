@@ -18,13 +18,17 @@ export default function Login({ history }) {
         event.preventDefault();        
         const response = await api.get('./user', {
             headers: { email, password }
-        });
-
-        const { _id } = response.data;
-
-        localStorage.setItem('user', _id);         
-
-        history.push('/feed');
+        });    
+                        
+        if( response.data === "does not exist") {
+            alert("User does not exist");
+        } else {            
+            const { _id } = response.data;
+    
+            localStorage.setItem('user', _id);         
+    
+            history.push('/feed');
+        }
     }
 
     return (
