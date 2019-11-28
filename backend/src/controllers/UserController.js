@@ -120,17 +120,9 @@ module.exports = {
     },
 
     async getFriends(req, res) {
-        const { user_id } = req.headers;        
+        const { user_id } = req.headers;                
 
-        const user = await User.findOne().where('_id').equals(user_id);
-
-        let friendsIds = user.friends;
-                
-        let friends = [];        
-
-        for (let i = 0; i < friendsIds.length; i++) {
-            friends.push(await User.findOne().where('_id').equals(friendsIds[i]));
-        }        
+        const friends = await User.find({ friends: user_id });        
                 
         return res.json(friends)
     }

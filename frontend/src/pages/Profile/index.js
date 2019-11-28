@@ -13,43 +13,39 @@ import './styles.css';
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");
     const [username, setUsername] = useState("");
-    const [friends, setFriends] = useState({});        
-    const user_id = useRef();      
-
-    let s ;
+    const [friendsPics, setFriendsPics] = useState([]);  
+    const [friends, setFriends] = useState([]);
+    const user_id = useRef();          
 
     useEffect(() => {
         localStorageUser.checkLocalStorageUser(history);
         localStorage.removeItem('searchUser');
-        user_id.current = localStorage.getItem('user');
+        user_id.current = localStorage.getItem('user');        
         async function getUser() {
             const response = await api.get('/userbyid', {
                 headers: { user_id: user_id.current }
-            });            
-            s = response.data
+            });                        
             setProfilepic(response.data.profilepic_url);
             setUsername(response.data.username);
         }
-        async function getFriends() {
+        async function getFriendsPics() {
             const response = await api.get('/friends', {
                 headers: { user_id: user_id.current }
-            });                           
-            // console.log(response.data[0])            
-            for (let i = 0; i < response.data.length; i++) {
-                setFriends([
-                     
-                    response.data[i]
-                ])
-            }
-            setFriends(response.data);
+            });                                                
+            setFriendsPics(response.data)                       
         }
-        getUser();
-        getFriends();                   
-    }, []);
 
-    // let { test } = friends[0];
+        getUser();
+        getFriendsPics();   
+    }, []);
         
-    // console.log(test)            
+    async function searchUser(friendsUsername) {
+        const response = await api.get('./username', {
+            headers: { username: friendsUsername }
+        });
+        localStorage.setItem('searchUser', response.data._id);
+        history.push('./user');
+    }
     
     return (
         <>
@@ -61,14 +57,19 @@ export default function Profile({ history }) {
                             <div className="profilepic">
                                 <div className="profilepicimg">
                                     <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image )})`}} />
-                                    <h1>{username}</h1>  
-                                    <h1>{friends.username}</h1>
+                                    <h1>{username}</h1>                                      
                                 </div>
                             </div>                            
                         </div>
                     </div>
                     <div className="friends">
-
+                        <ul className="friendsList">
+                        {friendsPics.map(friendsPics => (
+                            <li key={friendsPics._id} onClick={() => searchUser(friendsPics.username)}>
+                                <img src={(friendsPics.profilepic_url.indexOf("undefined") === -1 ? friendsPics.profilepic_url : default_user_image)} alt="friend pic" width={30}/>                                           
+                            </li>
+                        ))}
+                        </ul>
                     </div>
                     <div className="timeline">
 

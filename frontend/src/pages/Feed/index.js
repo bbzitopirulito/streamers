@@ -34,8 +34,12 @@ export default function Feed({ history }) {
             <FeedContainer className="feedwrapper" color={themeColor}>
                 <div className='feed'>
                     <Navmenu profilepicsrc={profilepic} />      
-                    <div className="welcomeback">
-                        <h1>{username}</h1>                             
+                    <div className="welcomeback">                            
+                        <div className="postbox">
+                            <div className="profileicon">
+                                <img src={profilepic} alt="profile pic" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </FeedContainer>                
