@@ -37,7 +37,7 @@ export default function Feed({ history }) {
                     <div className="welcomeback">                            
                         <div className="postbox">
                             <div className="profileicon">
-                                <img src={profilepic} alt="profile pic" />
+                                <img src={profilepic} alt="profile pic" width={20}/>
                             </div>
                         </div>
                     </div>

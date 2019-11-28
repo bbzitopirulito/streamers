@@ -36,7 +36,7 @@
     margin-left: 30px;
 }
 
-.profilewrapper > .container > .friends {   
+.profilewrapper > .container > .friends {       
     flex-direction: column;         
     width: 800px;
     height:65px;
@@ -50,11 +50,12 @@
 .profilewrapper > .container > .friends > ul.friendsList {
     list-style: none;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;    
+    justify-content: center;            
 }
 
-.profilewrapper > .container > .friends > ul.friendsList > li {
-    padding:10px;    
+.profilewrapper > .container > .friends > ul.friendsList > li {    
+    padding:10px;
 }
 
 .profilewrapper > .container > .friends > ul.friendsList > li > img {

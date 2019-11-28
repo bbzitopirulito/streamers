@@ -12,8 +12,7 @@ import './styles.css';
 
 export default function Profile({ history }) {
     const [profilepic, setProfilepic] = useState("");
-    const [username, setUsername] = useState("");
-    const [friendsPics, setFriendsPics] = useState([]);  
+    const [username, setUsername] = useState("");     
     const [friends, setFriends] = useState([]);
     const user_id = useRef();          
 
@@ -28,21 +27,22 @@ export default function Profile({ history }) {
             setProfilepic(response.data.profilepic_url);
             setUsername(response.data.username);
         }
-        async function getFriendsPics() {
+        async function getFriends() {
             const response = await api.get('/friends', {
                 headers: { user_id: user_id.current }
             });                                                
-            setFriendsPics(response.data)                       
+            setFriends(response.data)                       
         }
 
         getUser();
-        getFriendsPics();   
-    }, []);
+        getFriends();   
+    }, []);    
         
     async function searchUser(friendsUsername) {
         const response = await api.get('./username', {
             headers: { username: friendsUsername }
         });
+        
         localStorage.setItem('searchUser', response.data._id);
         history.push('./user');
     }
@@ -64,9 +64,9 @@ export default function Profile({ history }) {
                     </div>
                     <div className="friends">
                         <ul className="friendsList">
-                        {friendsPics.map(friendsPics => (
-                            <li key={friendsPics._id} onClick={() => searchUser(friendsPics.username)}>
-                                <img src={(friendsPics.profilepic_url.indexOf("undefined") === -1 ? friendsPics.profilepic_url : default_user_image)} alt="friend pic" width={30}/>                                           
+                        {friends.map(friend => (
+                            <li key={friend._id} onClick={() => searchUser(friend.username)}>
+                                <img src={(friend.profilepic_url.indexOf("undefined") === -1 ? friend.profilepic_url : default_user_image)} alt="friend pic" />                                           
                             </li>
                         ))}
                         </ul>

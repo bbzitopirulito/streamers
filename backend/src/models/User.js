@@ -8,7 +8,8 @@ const UserSchema = new mongoose.Schema({
     profilepic:String,
     private:Boolean,
     friends:[String],
-    theme:String,   
+    theme:String, 
+    posts: [String]  
 }, {
     toJSON: {
         virtuals: true,

@@ -1,3 +1,13 @@
 next steps:
-- finish profile page
+- create simple post system
+- update insomnia
+- create real-time private chat
+- create "like dislike" system
+- fix picture error
+- allow user to alter the profile wallpaper
+
+
+davi: 
+- correct account creation security gap
+- correct feed profile pic error
 

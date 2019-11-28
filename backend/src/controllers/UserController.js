@@ -122,7 +122,7 @@ module.exports = {
     async getFriends(req, res) {
         const { user_id } = req.headers;                
 
-        const friends = await User.find({ friends: user_id });        
+        const friends = await User.find({ friends: user_id }).limit(13);        
                 
         return res.json(friends)
     }
