@@ -6,6 +6,8 @@ import FeedContainer from '../../components/Styled/FeedContainer';
 import api from '../../services/api';
 import localStorageUser from '../../auth/localStorageUser/index';
 
+import default_user_image from '../../assets/default_user_image.jpg'
+
 import './styles.css';
 
 export default function Feed({ history }) {
@@ -27,17 +29,30 @@ export default function Feed({ history }) {
             setUsername(response.data.username);
         }
         getUser();
-    }, []);
+    }, []);    
 
     return (
         <>                        
             <FeedContainer className="feedwrapper" color={themeColor}>
-                <div className='feed'>
+                <div className='feedcontainer'>
                     <Navmenu profilepicsrc={profilepic} />      
-                    <div className="welcomeback">                            
+                    <div className="feed">                            
                         <div className="postbox">
-                            <div className="profileicon">
-                                <img src={profilepic} alt="profile pic" width={20}/>
+                            <div className="line1">
+                                <div className="profileicon">                                
+                                    <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image)})`}} />
+                                </div>
+                                <div className="text">
+                                    <textarea name="posttext" placeholder="Put it out..." id="posttext"></textarea>
+                                </div>
+                            </div>
+                            <div className="line2">
+                                <div className="publiccheckbox">
+                                    <input type="checkbox" name="privatepost" id="privatepost"/>
+                                </div>
+                                <div className="postbutton">
+                                    <button className="">Post</button>
+                                </div>
                             </div>
                         </div>
                     </div>
