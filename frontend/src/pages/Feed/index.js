@@ -14,6 +14,8 @@ export default function Feed({ history }) {
     const [username, setUsername] = useState("");
     const [themeColor, setThemeColor] = useState("");
     const [profilepic, setProfilepic] = useState("");
+    const [posttext, setPosttext] = useState("");
+    const [privatepost, setPrivatepost] = useState(false);
     const user_id = useRef();
 
     useEffect(() => {
@@ -31,6 +33,17 @@ export default function Feed({ history }) {
         getUser();
     }, []);    
 
+    async function post() {
+        await api.post('/posts', {
+            text: posttext,
+            private: privatepost
+        }, {
+            headers: {                
+                user_id: user_id.current                
+            }
+        });        
+    }
+
     return (
         <>                        
             <FeedContainer className="feedwrapper" color={themeColor}>
@@ -43,15 +56,18 @@ export default function Feed({ history }) {
                                     <header style={{backgroundImage: `url(${(profilepic.indexOf("undefined") === -1 ? profilepic : default_user_image)})`}} />
                                 </div>
                                 <div className="text">
-                                    <textarea name="posttext" placeholder="Put it out..." id="posttext"></textarea>
+                                    <textarea onChange={event => setPosttext(event.target.value)} name="posttext" placeholder="Put it out..." id="posttext"></textarea>
                                 </div>
                             </div>
                             <div className="line2">
                                 <div className="publiccheckbox">
-                                    <input type="checkbox" name="privatepost" id="privatepost"/>
+                                    <input onClick={() => privatepost ? setPrivatepost(false) : setPrivatepost(true)} type="checkbox" name="privatepost" id="privatepost"/>
+                                    <div className="privatepost">
+                                        <p> Private post </p>
+                                    </div>
                                 </div>
                                 <div className="postbutton">
-                                    <button className="">Post</button>
+                                    <button onClick={() => post()} className="">Post</button>
                                 </div>
                             </div>
                         </div>
@@ -62,5 +78,3 @@ export default function Feed({ history }) {
         </>
     );
 }
-
-//menu buttons: home, log out, preferences

@@ -9,7 +9,7 @@
     height: 35px;
     background-size:cover;
     border-radius: 4px;
-    margin: 0 30px 0 30px;    
+    margin: 0 30px 0 30px;   
 }
 
 .feedwrapper > .feedcontainer > .feed > .postbox {
@@ -17,6 +17,7 @@
     height: 250px;
     border: 2px solid #d1d5da;
     border-radius: 5px;
+   
 }
 
 .feedwrapper > .feedcontainer > .feed > .postbox > .line1 {
@@ -30,15 +31,49 @@
 }
 
 .feedwrapper > .feedcontainer > .feed > .postbox > .line2 > input {
-    order:2
-}
-
-.feedwrapper > .feedcontainer > .feed > .postbox > .line1 > .text {
-
+    order:2;
 }
 
 .feedwrapper > .feedcontainer > .feed > .postbox > .line1 > .text > textarea {
     width:570px;
     height:150px;
     padding:10px;
+    resize: none;
+    border-radius: 10px;
 }
+
+.feedwrapper > .feedcontainer > .feed > .postbox > .line2 > .postbutton > button {    
+    border: 0;
+    border-radius: 4px;
+    margin-left:0%;
+    width: 100%;
+    height: 26px;
+    padding: 0 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #1da1f2;
+    color:#fff;    
+    cursor: pointer;    
+}
+
+.feedwrapper > .feedcontainer > .feed > .postbox > .line2 > .postbutton {    
+    margin-left: auto;
+    margin-right:31px;
+}
+
+.feedwrapper > .feedcontainer > .feed > .postbox > .line2 > .publiccheckbox {
+    display: flex;
+    margin-left: auto;
+    margin-right: 340px;
+}
+
+.feedwrapper > .feedcontainer > .feed > .postbox > .line2 > .publiccheckbox > .privatepost {
+    margin-left: 10px;
+
+}
+
+.feedwrapper > .feedcontainer > .feed > .postbox > .line2 > .publiccheckbox > .privatepost > p {
+    font-weight: bold;
+
+}
+
