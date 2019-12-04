@@ -20,6 +20,7 @@ routes.post('/users', upload.single('profilepic'), UserController.store);
 routes.put('/updateuser', upload.single('profilepic'), UserController.update);
 
 //post
-routes.post('/posts', PostController.store)
+routes.post('/posts', PostController.store);
+routes.get('/getposts', PostController.showAll);
 
 module.exports = routes;
