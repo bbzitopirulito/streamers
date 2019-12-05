@@ -32,12 +32,12 @@ module.exports = {
 
         for (let i = 0; i < friends.length; i++) {
             const friend = await User.findOne({ _id:friends[i] });
-            if(friend.posts)
-            posts.push(friend.posts[0]);
-        }
-
-        console.log(posts);
+            if(friend.posts[0]) {                
+                var post = await Post.findOne({ _id: friend.posts[0] });
+                posts.push(post);
+            }            
+        }        
         
-        return res.json('');
+        return res.json(posts);
     }
 }

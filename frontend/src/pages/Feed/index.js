@@ -15,6 +15,7 @@ export default function Feed({ history }) {
     const [themeColor, setThemeColor] = useState("");
     const [profilepic, setProfilepic] = useState("");
     const [posttext, setPosttext] = useState("");
+    const [posts, setPosts] = useState([]);
     const [privatepost, setPrivatepost] = useState(false);
     const user_id = useRef();
 
@@ -30,7 +31,16 @@ export default function Feed({ history }) {
             setThemeColor((response.data.theme === "dark" ? "#586069" : "#FFF"));                        
             setUsername(response.data.username);
         }
+
+        async function getPosts() {
+            const response = await api.get('/getposts', {
+                headers: { user_id:user_id.current }
+            });
+            setPosts(response.data);
+        }
+
         getUser();
+        getPosts();
     }, []);    
 
     async function post() {
@@ -70,6 +80,13 @@ export default function Feed({ history }) {
                                     <button onClick={() => post()} className="">Post</button>
                                 </div>
                             </div>
+                        </div>
+                        <div className="posts">                            
+                            {posts.map(post => (
+                                <p>
+                                    {post.text}
+                                </p> 
+                            ))}                            
                         </div>
                     </div>
                 </div>

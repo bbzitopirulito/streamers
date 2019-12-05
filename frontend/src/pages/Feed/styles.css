@@ -1,7 +1,12 @@
 .feedwrapper > .feedcontainer > .feed {
     display: flex;
-    justify-content: center;    
+    flex-direction: column;   
+    align-items: center; 
     margin-top: 10px;
+}
+
+.feedwrapper > .feedcontainer > .feed > .posts {
+    
 }
 
 .feedwrapper > .feedcontainer > .feed > .postbox > .line1 > .profileicon > header {
