@@ -11,3 +11,8 @@ davi:
 - correct account creation security gap
 - correct feed profile pic error
 
+todo:
+- review code, review design (dont rush)
+- set priorities
+- refactor code using graphql and bootstrap
+

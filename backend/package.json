@@ -7,8 +7,10 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
+    "apollo-server": "^2.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "graphql": "^15.4.0",
     "luxon": "^1.21.3",
     "moment": "^2.24.0",
     "mongoose": "^5.7.8",
